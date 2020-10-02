@@ -11,6 +11,7 @@ import pytesseract
 import numpy as np
 
 rootdir=('C:\\Users\\shash\\Desktop\\Data_Science\\Major2020\\images')
+
 pytesseract.pytesseract.tesseract_cmd='C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 scale =0.5
 
