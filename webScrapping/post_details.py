@@ -6,7 +6,7 @@ import pandas as pd
 df = pd.DataFrame(columns =['likes','about_post','date'])
 
 url="https://www.instagram.com/kiaraaliaadvani/"
-
+number_of_post=587
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -26,13 +26,13 @@ content.click()
 
 username=driver.find_element_by_xpath('/html/body/div[5]/div[2]/div/div[2]/div/div/div[1]/div/form/div[1]/div[1]/div/label/input')
 #print(username)
-username.send_keys("#insta id")
+username.send_keys("")
 
 #driver.close()
 
 password=driver.find_element_by_name('password')
 
-password.send_keys("#insta password")   
+password.send_keys("")   
 
 button=driver.find_element_by_xpath('/html/body/div[5]/div[2]/div/div[2]/div/div/div[1]/div/form/div[1]/div[3]/button')
 button.send_keys(Keys.RETURN)
@@ -56,7 +56,7 @@ about_post='not known'
 date='not know'
 
 try:
-    for i in range(1,1060+1):
+    for i in range(1,number_of_post+1):
         print("photo number",i)
         if first==0:
             move=driver.find_element_by_xpath('/html/body/div[4]/div[1]/div/div/a')
