@@ -17,7 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from home import views
 urlpatterns = [
-    path('',views.home,name='home'),
-    path('predict',views.predict,name='predict'),
-    path('final_output',views.final_output,name="final_output")
+    path('', views.home, name='home'),
+    path('predict', views.predict, name='predict'),
+    path('countryInfluencer/<str:countryName>',
+         views.countryInfluencer, name="countryInfluencer"),
+    path('final_output', views.final_output, name="final_output")
 ]

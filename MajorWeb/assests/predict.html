@@ -33,7 +33,7 @@
                                   <button type="button" name="close" class="text-danger" data-dismiss="modal" style="border: 2px solid white;cursor:pointer;">&times;</button>
                           </div>
                           <div class="modal-body">
-                              <form action="/home/predict" method="POST" enctype="multipart/form-data">
+                              <form action="/predict" method="POST" enctype="multipart/form-data">
                                   {% csrf_token %}
                                   <div class="form-group">
                                       <label class="required">
@@ -78,14 +78,14 @@
                                   </div>
                                   <div class="form-group">
                                       <label class="required" for="student"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Product Description</label>
-                                      <textarea name="productDetail" rows="8" cols="60" style="font-style: oblique;"></textarea>
-                                      <!-- <input type="radio" id="student" name="designation" value="student" required>
+                                      <textarea name="productDetail" rows="6" cols="60" style="font-style: oblique;"></textarea>
                                       &nbsp;&nbsp;&nbsp;&nbsp;
-                                      <label class="required" for="tutor"> <i class="fa fa-book" aria-hidden="true"></i>Teacher</label>
-                                      <input type="radio" id="tutor" name="designation" value="tutor" required> -->
+                                      <label class="required" for="student"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Some Related "@" and "#"</label>
+                                      <textarea name="hastags" rows="6" cols="60" style="font-style: oblique;"></textarea>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;
                                   </div>
                                   <div class="form-group">
-                                      <input type="submit" class="btn btn-success" required style="width:100%">
+                                      <input type="submit"  id = "submitBtn"class="btn btn-success" required style="width:100%">
                                   </div>
                               </form>
                           </div>
