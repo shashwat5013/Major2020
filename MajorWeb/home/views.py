@@ -170,6 +170,8 @@ def predict(request):
     if request.method == 'GET':
         return render(request, 'predict2.html')
     else:
+        valueA = float(request.POST['valueA'])
+        valueB=1-valueA
         onBasisPost.clear()
         onBasisVideos.clear()
         onBasisCosine.clear()
@@ -223,8 +225,7 @@ def predict(request):
                 except:
                     print('shashwat')
 
-        data['acc_to_post'] = 0.65*data['average_post_comments'] + \
-            0.35*data['average_post_likes']
+        data['acc_to_post'] = valueA*data['average_post_comments'] + valueB*data['average_post_likes']
         new_data = data.sort_values(by='acc_to_post', ascending=False)
         for d in new_data.values:
             if d[8] != 0:
@@ -236,8 +237,7 @@ def predict(request):
                 except:
                     pass
 
-        data['acc_to_videos'] = 0.65*data['average_videos_comments'] + \
-            0.35*data['average_videos_views']
+        data['acc_to_videos'] = valueA*data['average_videos_comments'] + valueB*data['average_videos_views']
         new_data = data.sort_values(by='acc_to_videos', ascending=False)
         for d in new_data.values:
             if d[9] != 0:
