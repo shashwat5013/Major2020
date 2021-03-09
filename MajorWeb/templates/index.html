@@ -226,6 +226,18 @@
             width: 80%;
             height: 80%;
         }
+
+        a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        a:hover {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <!-- #F9F9F9 -->
@@ -420,39 +432,52 @@
                 <div class="countries-title">
                     Categories for which we PREDICT
                 </div>
-                <div class="category-clipart">
-                    <div class="category">
-                        <div class="category-name">
-                            Fashion
+                <a href="/categoryInfluencer/Fashion">
+                    <div class="category-clipart">
+                        <div class="category">
+                            <div class="category-name">
+                                Fashion
+                                <img class="img-fluid" src="{% static 'fashion.jpg' %}"></img>
+                            </div>
                         </div>
-                        <img class="img-fluid" src="{% static 'fashion.jpg' %}"></img>
                     </div>
-                </div>
-                <div class="category-clipart">
-                    <div class="category">
-                        <div class="category-name">
-                            Singer
+                </a>
+                <a href="/categoryInfluencer/singer">
+                    <div class="category-clipart">
+                        <div class="category">
+                            <div class="category-name">
+                                Singer
+
+                                <img class="img-fluid" src="{% static 'singer.jpg' %}"></img>
+                            </div>
                         </div>
-                        <img class="img-fluid" src="{% static 'singer.jpg' %}"></img>
                     </div>
-                </div>
-                <div class="category-clipart">
-                    <div class="category">
-                        <div class="category-name">
-                            Sport
+                </a>
+                <a href="/categoryInfluencer/sport">
+                    <div class="category-clipart">
+                        <div class="category">
+                            <div class="category-name">
+                                Sport
+
+                                <img class="img-fluid" style="min-width: 400px;" src="{% static 'sport.jpg' %}"></img>
+                            </div>
                         </div>
-                        <img class="img-fluid" style="min-width: 400px;" src="{% static 'sport.jpg' %}"></img>
                     </div>
-                </div>
-                <div class="category-clipart">
-                    <div class="category">
-                        <div class="category-name">
-                            Actor
+                </a>
+
+                <a href="/categoryInfluencer/actor">
+                    <div class="category-clipart">
+                        <div class="category">
+                            <div class="category-name">
+                                Actor
+
+                                <img class="img-fluid" style="min-width: 400px; max-height: 200px;"
+                                    src="{% static 'actor.png' %}"></img>
+                            </div>
                         </div>
-                        <img class="img-fluid" style="min-width: 400px; max-height: 200px;"
-                            src="{% static 'actor.png' %}"></img>
                     </div>
-                </div>
+                </a>
+
                 <div class="category-name">
                     And Many more.........
                 </div>

@@ -23,12 +23,100 @@ def redu(cate, countr):
     data = pd.read_csv(
         'C:\\Users\\shash\\Desktop\\Data_Science\\Major2020\\webScrapping/final_dataset.csv', encoding='unicode_escape')
     if(countr != 'empty'):
-        indexes = data[data['country'] != countr].index
+        indexes = data[data['country'].str.lower()  != countr.lower() ].index
         data.drop(indexes, inplace=True)
     if(cate != 'empty'):
-        indexes = data[data['category'] != cate].index
+        indexes = data[data['category'].str.lower() != cate.lower()].index
         data.drop(indexes, inplace=True)
     return data
+
+def reduceCategoryPostLike(countryName):
+    final = pd.read_csv(
+        'C:\\Users\\shash\\Desktop\\Data_Science\\Major2020\\webScrapping/final_dataset.csv', encoding='unicode_escape')
+    links = pd.read_excel(
+        'C:\\Users\\shash\\Desktop\\Data_Science\\Major2020\\webScrapping/Influencer_with_links.xlsx')
+    # links=pd.read_excel('Influencer_with_links.xlsx')
+    result = pd.merge(final, links, on="name")
+    indexes = result[result['category'].str.lower() != countryName.lower()].index
+    result.drop(indexes, inplace=True)
+    result = result.sort_values(by="average_post_likes", ascending=False)
+    onCountryFilter = []
+    for d in result.values:
+        onCountryFilter.append(
+            {'name': d[0], 'category': d[10], 'id': d[11], 'src': d[12]})
+        if(len(onCountryFilter) == 5):
+            return onCountryFilter
+    return onCountryFilter
+
+
+def reduceCategoryPostComment(countryName):
+    final = pd.read_csv(
+        'C:\\Users\\shash\\Desktop\\Data_Science\\Major2020\\webScrapping/final_dataset.csv', encoding='unicode_escape')
+    links = pd.read_excel(
+        'C:\\Users\\shash\\Desktop\\Data_Science\\Major2020\\webScrapping/Influencer_with_links.xlsx')
+    # links=pd.read_excel('Influencer_with_links.xlsx')
+    result = pd.merge(final, links, on="name")
+    indexes = result[result['category'].str.lower() !=countryName.lower()].index
+    result.drop(indexes, inplace=True)
+    result = result.sort_values(by="average_post_comments", ascending=False)
+    onCountryFilter = []
+    for d in result.values:
+        onCountryFilter.append(
+            {'name': d[0], 'category': d[10], 'id': d[11], 'src': d[12]})
+        if(len(onCountryFilter) == 5):
+            return onCountryFilter
+    return onCountryFilter
+
+def reduceCategoryVideoComment(countryName):
+    final = pd.read_csv(
+        'C:\\Users\\shash\\Desktop\\Data_Science\\Major2020\\webScrapping/final_dataset.csv', encoding='unicode_escape')
+    links = pd.read_excel(
+        'C:\\Users\\shash\\Desktop\\Data_Science\\Major2020\\webScrapping/Influencer_with_links.xlsx')
+    # links=pd.read_excel('Influencer_with_links.xlsx')
+    result = pd.merge(final, links, on="name")
+    indexes = result[result['category'].str.lower() !=countryName.lower()].index
+    result.drop(indexes, inplace=True)
+    result = result.sort_values(by="average_videos_comments", ascending=False)
+    onCountryFilter = []
+    for d in result.values:
+        onCountryFilter.append(
+            {'name': d[0], 'category': d[10], 'id': d[11], 'src': d[12]})
+        if(len(onCountryFilter) == 5):
+            return onCountryFilter
+    return onCountryFilter
+
+
+def reduceCategoryVideoViews(countryName):
+    final = pd.read_csv(
+        'C:\\Users\\shash\\Desktop\\Data_Science\\Major2020\\webScrapping/final_dataset.csv', encoding='unicode_escape')
+    links = pd.read_excel(
+        'C:\\Users\\shash\\Desktop\\Data_Science\\Major2020\\webScrapping/Influencer_with_links.xlsx')
+    # links=pd.read_excel('Influencer_with_links.xlsx')
+    result = pd.merge(final, links, on="name")
+    indexes = result[result['category'].str.lower() !=countryName.lower()].index
+    result.drop(indexes, inplace=True)
+    result = result.sort_values(by="average_videos_views", ascending=False)
+    onCountryFilter = []
+    for d in result.values:
+        onCountryFilter.append(
+            {'name': d[0], 'category': d[10], 'id': d[11], 'src': d[12]})
+        if(len(onCountryFilter) == 5):
+            return onCountryFilter
+    return onCountryFilter
+
+
+
+def categoryInfluencer(request, categoryName):
+    countryName=categoryName
+    print(countryName)
+    onCountryFilter = reduceCategoryPostComment(countryName)
+    onCountryPostLike = reduceCategoryPostComment(countryName)
+    onCountryVideocomments = reduceCategoryVideoComment(countryName)
+    onCountryVideoViews = reduceCategoryVideoViews(countryName)
+    print(onCountryVideocomments)
+    return render(request, 'category.html', {'country': countryName, 'onCountryFilter': onCountryFilter, 'onCountryPostLike': onCountryPostLike, 'onCountryVideocomments': onCountryVideocomments, 'onCountryVideoViews': onCountryVideoViews})
+
+
 
 
 def cosineSimilairty(cate, countr, productDescription, hashtags):
